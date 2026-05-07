@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Données (trop volumineuses pour Git)
+data/raw/*.csv
+data/raw/*.zip
+data/processed/*.csv
+data/external/*.csv
+
+# Environnement
+.venv/
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

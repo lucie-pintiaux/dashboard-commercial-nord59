@@ -228,3 +228,105 @@ data/external/*.csv
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Données INSEE volumineuses (ne pas commit)
+data/raw/base-cc-emploi-pop-active-2021_csv.zip
+data/raw/ensemble.zip
+data/raw/indic-struct-distrib-revenu-2021-COMMUNE.zip
+data/raw/indic-struct-distrib-revenu-2021-COMMUNES_csv.zip
+# ===========================
+# PROJET DASHBOARD COMMERCIAL NORD 59
+# ===========================
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# === VIRTUAL ENVIRONMENTS ===
+.venv/
+venv/
+ENV/
+env/
+.virtualenv/
+
+# === JUPYTER NOTEBOOK ===
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# === ENVIRONNEMENT ===
+.env
+.env.local
+.env.*.local
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# === DATA - Fichiers volumineux ===
+# Fichiers bruts SIRENE (> 100 Mo)
+data/raw/*.zip
+data/raw/StockEtablissement_utf8.csv
+
+# Fichiers INSEE extraits (79 Mo total)
+data/raw/insee_extracted/
+data/raw/base-cc-emploi-pop-active-2021_csv/
+data/raw/ensemble/
+data/raw/indic-struct-distrib-revenu-2021-COMMUNES_csv/
+
+# Garder les petits fichiers
+!data/raw/naf_rev2_libelles.xls
+!data/raw/sirene_nord59_20260507.csv
+!data/raw/METADATA.md
+
+# === DATA - Fichiers temporaires ===
+data/temp/
+data/cache/
+
+# === LOGS ===
+logs/
+*.log
+
+# === TESTS ===
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# === SYSTÈME ===
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# === STREAMLIT ===
+.streamlit/secrets.toml
+
+# === MODELS ===
+models/*.pkl
+models/*.joblib
+models/*.h5
+
+# === OUTPUTS temporaires ===
+outputs/temp/

@@ -1,132 +1,161 @@
-# 🗺️ Dashboard Commercial Nord 59
-
-![Python](https://img.shields.io/badge/Python-3.14-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.57-red)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-En%20développement-orange)
-
-> Dashboard web interactif d'analyse de la dynamique commerciale du département du Nord (59)  
-> Données SIRENE — Open Source — Déployé sur Streamlit Cloud
-
 ---
 
-## 🎯 Objectif
+## 🚦 Installation
 
-Les acteurs du développement économique (CCI, collectivités, communautés d'agglomération)
-manquent d'outils accessibles pour analyser la dynamique commerciale territoriale.
+### Prérequis
+- Python 3.11+ installé
+- Git installé
+- 4 Go RAM minimum (chargement datasets)
 
-Ce dashboard permet de **visualiser, analyser et comparer** la situation commerciale
-des 648 communes du Nord à partir des données publiques SIRENE.
-
-**Gain de temps** : 3h de compilation Excel → 5 minutes d'analyse
-
----
-
-## ✨ Fonctionnalités
-
-- 🗺️ **Carte choroplèthe** interactive — vacance commerciale par commune
-- 🏘️ **Focus Commune** — diagnostic détaillé + comparaison départementale  
-- 🤝 **Analyse EPCI/CA** — comparaison intercommunale
-- 📊 **Analyse Sectorielle** — filtrage par type de commerce (NAF)
-- 🏆 **Score de fragilité** — classement objectif 0-100
-- 📄 **Export PDF** — fiches diagnostics automatisées
-
----
-
-## 🚀 Installation
-
+### 1. Cloner le repository
 ```bash
-# Cloner le repo
-git clone https://github.com/lucie-pintiaux/dashboard-commercial-nord59.git
+git clone https://github.com/ton-username/dashboard-commercial-nord59.git
 cd dashboard-commercial-nord59
+```
 
-# Créer et activer le virtualenv
+### 2. Créer l'environnement virtuel
+```bash
 python -m venv .venv
-.venv\Scripts\activate  # Windows
-source .venv/bin/activate  # Linux/Mac
 
-# Installer les dépendances
+# Windows
+.venv\Scripts\activate
+
+# Linux/Mac
+source .venv/bin/activate
+```
+
+### 3. Installer les dépendances
+```bash
 pip install -r requirements.txt
+```
 
-# Configurer les variables d'environnement
-copy .env.example .env
+### 4. Configurer les variables d'environnement
+```bash
+cp .env.example .env
+# Éditer .env selon vos besoins
+```
+
+### 5. Lancer le dashboard (Sprint 5+)
+```bash
+streamlit run src/dashboard/app.py
 ```
 
 ---
 
-## 📊 Données sources
+## 📊 Utilisation
 
-| Source | Contenu | MAJ |
-|--------|---------|-----|
-| [SIRENE INSEE](https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/) | Établissements commerciaux | Mensuelle |
-| [INSEE FiLoSoFi](https://www.insee.fr/fr/statistiques/7233950) | Revenus ménages | Annuelle |
-| [INSEE Populations](https://www.insee.fr/fr/statistiques/7739582) | Population communale | Annuelle |
-| [IGN AdminExpress](https://geoservices.ign.fr/adminexpress) | Contours communes | Trimestrielle |
+### Notebooks d'exploration (Sprint 0-4)
+```bash
+jupyter notebook notebooks/
+```
 
----
+**Notebooks disponibles** :
+- `00_sprint0_setup.ipynb` — Vérification environnement
+- `01_sprint1_collecte_sirene.ipynb` — Collecte données SIRENE
+- `02_sprint2_nettoyage_enrichissement.ipynb` — Nettoyage + enrichissement INSEE/NAF
+- `03_sprint3_exploration.ipynb` — (À venir) KPI et visualisations
+- `04_sprint4_analyses_avancees.ipynb` — (À venir) Scoring et clustering
 
-## 🗂️ Structure du projet
-dashboard-commercial-nord59/
-├── data/
-│   ├── raw/          # Données brutes SIRENE
-│   ├── processed/    # Données nettoyées et enrichies
-│   └── external/     # Données tierces (INSEE, IGN)
-├── notebooks/        # Jupyter notebooks par sprint
-├── src/
-│   ├── dashboard/    # Application Streamlit (5 pages)
-│   ├── data/         # Scripts collecte et nettoyage
-│   ├── models/       # Scoring et clustering
-│   └── utils/        # Fonctions utilitaires
-└── tests/            # Tests unitaires et intégration
----
-
-## 👥 Personas cibles
-
-- **Sophie** — Chargée de mission CCI (analyse territoriale)
-- **Claire** — Vice-Présidente CA (arbitrage budgétaire)
-- **Fatima** — Élue municipale (diagnostic commune)
+### Dashboard web (Sprint 5+)
+```bash
+streamlit run src/dashboard/app.py
+```
+Interface accessible sur `http://localhost:8501`
 
 ---
 
-## 🛠️ Stack technique
+## 👥 Personas Utilisateurs
 
-| Outil | Usage |
-|-------|-------|
-| Python 3.14 | Langage principal |
-| Pandas | Manipulation données |
-| Streamlit | Dashboard web |
-| Plotly | Visualisations interactives |
-| Scikit-learn | Scoring + clustering |
-| GeoPandas | Cartographie |
+### Primaires (MVP Sprint 5)
+1. **Sophie Marchand** — Chargée de mission CCI
+   - Besoin : Analyses territoriales rapides, identification communes prioritaires
+   
+2. **Claire Deschamps** — Vice-Présidente CA
+   - Besoin : Arbitrage budgétaire 800k€, comparaison EPCI
+   
+3. **Fatima Benali** — Élue municipale
+   - Besoin : Diagnostic communal, comparaison avec communes similaires
+
+### Secondaires (Sprint 7)
+4. **Jean-Pierre Leclercq** — Directeur CCI (vision stratégique)
+5. **Julien Vasseur** — DGS CA (évaluation politiques publiques)
+6. **Isabelle Vanderhaegen** — Directrice acquisitions immobilier
 
 ---
 
-## 📅 Roadmap
+## 📈 Avancement du Projet
 
-| Sprint | Objectif | Statut |
-|--------|----------|--------|
-| Sprint 0 | Setup environnement | 🟡 En cours |
-| Sprint 1 | Collecte données SIRENE | ⏳ À venir |
-| Sprint 2 | Nettoyage & enrichissement | ⏳ À venir |
-| Sprint 3 | Exploration & KPI | ⏳ À venir |
-| Sprint 4 | Analyses avancées & scoring | ⏳ À venir |
-| Sprint 5 | Dashboard MVP | ⏳ À venir |
-| Sprint 6 | Déploiement | ⏳ À venir |
-| Sprint 7 | Fonctionnalités avancées | ⏳ À venir |
-| Sprint 8 | Finalisation | ⏳ À venir |
+### Métriques globales
+| Métrique | Valeur |
+|----------|--------|
+| **Sprints complétés** | 2 / 8 (25%) |
+| **Story points complétés** | 32 / 110 (29%) |
+| **User Stories terminées** | 7 / 44 (16%) |
+| **Vélocité moyenne** | 16 SP/sprint |
+
+### Sprint en cours : Sprint 2 (fin) — US-013, US-014
+**Objectif** : Dictionnaire de données + Fichier EPCI  
+**Progression** : 18/23 SP (78%)
+
+### Prochains jalons
+- **Fin Mai 2026** : Sprint 3 — Exploration & KPI
+- **Début Juin 2026** : Sprint 4 — Scoring & clustering
+- **Mi-Juin 2026** : Sprint 5 — Dashboard MVP déployé
+- **Fin Juin 2026** : Sprints 6-8 — Finalisation & recommandations
 
 ---
 
 ## 🤝 Contribution
 
-Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les guidelines.
+Les contributions sont les bienvenues ! Merci de lire [CONTRIBUTING.md](CONTRIBUTING.md) avant de proposer une pull request.
+
+### Quick start contributeurs
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'feat: Add AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+### Conventions
+- **Commits** : Format conventionnel (`feat:`, `fix:`, `docs:`, `refactor:`)
+- **Code** : PEP 8, type hints, docstrings Google style
+- **Tests** : Coverage > 80%
 
 ---
 
-## 📄 Licence
+## 📜 Licence
 
-MIT — Voir [LICENSE](LICENSE)
+Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
-**✍️ Auteur** : Lucie Pintiaux | **Démarrage** : 08/05/2026
+## 📞 Contact & Ressources
+
+### Auteur
+**Lucie Pintiaux** — Analyste Data & Product Owner  
+📧 Email : [l.pintiaux@gmail.com]  
+💼 LinkedIn : [www.linkedin.com/in/lucie-pintiaux]  
+
+### Liens utiles
+- 📊 [Données SIRENE](https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/)
+- 📈 [INSEE — Recensement](https://www.insee.fr/fr/statistiques)
+- 🏪 [Nomenclature NAF](https://www.insee.fr/fr/information/2406147)
+- 🏛️ [Action Cœur de Ville](https://agence-cohesion-territoires.gouv.fr/action-coeur-de-ville-42)
+
+---
+
+## 🙏 Remerciements
+
+- **INSEE** pour les données SIRENE et les référentiels
+- **Data.gouv.fr** pour la mise à disposition des données publiques
+- **Communauté Streamlit** pour le framework
+- **CCI Hauts-de-France** pour l'inspiration du projet
+
+---
+
+**⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile sur GitHub !**
+
+---
+
+**Dernière mise à jour** : 11/05/2026  
+**Version** : 0.2.0 (Sprint 2 complété)

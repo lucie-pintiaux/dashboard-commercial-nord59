@@ -310,6 +310,29 @@ data/raw/indic-struct-distrib-revenu-2021-COMMUNES_csv/
 !data/processed/epci_communes_20260512.csv
 !data/processed/METADATA_*.md
 
+# === DATA - Fichiers volumineux ===
+
+# Fichiers bruts SIRENE
+data/raw/sirene_nord59_*.csv
+
+# Fichiers enrichissement (trop volumineux)
+data/raw/enrechissement_date_fermeture.csv
+
+# Fichiers processed volumineux
+data/processed/etablissements_enrichis_final_*.csv
+
+# Garder les fichiers légers
+!data/processed/communes_kpi_*.csv
+!data/processed/dictionnaire_donnees_*.csv
+!data/processed/epci_communes_*.csv
+
+# Fichiers GeoJSON
+!data/external/communes_nord59.geojson
+
+# Outputs visualisations (garder)
+!outputs/*.html
+!outputs/*.png
+
 # === DATA - Fichiers temporaires ===
 data/temp/
 data/cache/

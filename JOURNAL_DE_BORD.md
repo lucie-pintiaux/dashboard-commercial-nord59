@@ -283,3 +283,98 @@
 - 🚀 **Prêt pour Sprint 3** : Exploration & KPI
 
 ---
+---
+
+## 📅 Session du 12/05/2026 — Sprint 3 (complet)
+
+### ⏱️ Durée : ~6h
+### 🎯 Sprint : Sprint 3 — Exploration & KPI de base
+### 📋 US : US-020, US-021, US-022
+
+### ✅ Tâches réalisées
+- [x] US-020 : Calcul indicateurs de base par commune (5 SP)
+- [x] US-020 : Agrégation 98 369 établissements → 647 communes
+- [x] US-020 : Calcul 5 KPI (total, actifs, fermés, taux_mortalité, densité)
+- [x] US-020 : Validation cohérence (39 261 + 59 108 = 98 369 ✅)
+- [x] US-021 : Téléchargement GeoJSON communes Nord (648 communes)
+- [x] US-021 : Création carte choroplèthe interactive Plotly
+- [x] US-021 : Configuration colormap vert→orange→rouge (3 niveaux)
+- [x] US-021 : Export HTML optimisé (410 Ko, CDN)
+- [x] US-022 : Découverte fichier enrechissement_date_fermeture.csv
+- [x] US-022 : Investigation API SIRENE (échec, dates non exploitables)
+- [x] US-022 : Enrichissement avec dates fermetures historiques (90% match)
+- [x] US-022 : Agrégation temporelle 2015-2024 (créations + fermetures)
+- [x] US-022 : Création graphique Plotly 3 courbes (annotations COVID)
+- [x] US-022 : Installation Kaleido + export PNG haute résolution
+- [x] Sprint Review Sprint 3 réalisée
+
+### 📁 Fichiers créés/modifiés
+- `notebooks/03_sprint3_exploration.ipynb` — US-020, US-021, US-022 complètes
+- `data/processed/communes_kpi_20260512.csv` — 71,59 Ko, 647 × 13 colonnes
+- `data/external/communes_nord59.geojson` — 0,35 Mo, 648 communes
+- `outputs/carte_mortalite_commerciale_20260512.html` — 410,84 Ko
+- `outputs/evolution_creations_fermetures_20260512.png` — 288 Ko, 2800×1600 px
+- `data/raw/enrechissement_date_fermeture.csv` — 37,82 Mo (découverte clé)
+
+### 💬 Décisions prises
+- **Dates fermetures SIRENE** : Fichier Stock contient dates administratives (2024-2026), pas dates réelles → Enrichissement nécessaire
+- **Fichier enrichissement** : Utilisation version antérieure SIRENE avec dates préservées (90% correspondance)
+- **US-022 étendue** : Ajout enrichissement dates (non prévu) car opportunité découverte
+- **API SIRENE** : Tests API échoués (400 errors, dates manquantes) → Abandon piste API
+- **Export graphiques** : Installation Kaleido pour PNG haute résolution (nécessite restart kernel)
+- **US-023 intégrée** : Analyse COVID déjà couverte dans US-022 (zone orange, annotations)
+
+### 🚧 Blocages rencontrés
+- **Problème 1** : Dates fermetures toutes en 2024 dans fichier SIRENE Stock  
+  **Solution** : Découverte fichier `enrechissement_date_fermeture.csv` avec dates historiques préservées
+  
+- **Problème 2** : API Recherche-Entreprises retourne 400 Bad Request  
+  **Solution** : Tests multiples syntaxes échoués, abandon API, utilisation fichier enrichissement
+  
+- **Problème 3** : API INSEE requiert token (54h pour 98k requêtes)  
+  **Solution** : Temps prohibitif, confirmation utilisation fichier enrichissement
+  
+- **Problème 4** : Kaleido non installé (ValueError export PNG)  
+  **Solution** : `pip install kaleido` + restart kernel Jupyter
+
+### 📊 Métriques
+- **Story points terminés** : 18 (US-020: 5, US-021: 8, US-022: 5)
+- **Total Sprint 3** : 18/13 SP prévus (138%) ✅
+- **Fichiers produits** : 5 (2 data, 2 viz, 1 enrichissement)
+- **Correspondance enrichissement** : 90% (88 518 / 98 369 SIRET)
+- **Complétude dates fermetures** : 89,43% (52 860 / 59 108 fermés)
+
+### 🔄 Git commits
+- `feat: Sprint 3 - US-020 calcul KPI communaux (647 communes, 5 indicateurs)`
+- `feat: Sprint 3 - US-021 carte choroplèthe interactive (647 communes, HTML)`
+- `feat: Sprint 3 - US-022 analyse temporelle avec dates réelles (2015-2024, PNG HD)`
+- `docs: Sprint Review Sprint 3 + update README, JOURNAL, .gitignore`
+
+### 📝 Notes & Apprentissages
+- **Fichier SIRENE Stock** : La colonne `date_fermeture` est mise à jour lors des traitements administratifs INSEE, pas à la cessation d'activité réelle
+- **Fichiers flux SIRENE** : Alternative pour dates réelles mais 89 fichiers mensuels (180 Go décompressés) → trop lourd pour Sprint 3
+- **Version antérieure préservée** : Les anciennes extractions SIRENE conservent parfois les dates originales avant écrasement
+- **GeoJSON France** : Source `france-geojson.gregoiredavid.fr` fournit contours départements découpés
+- **Plotly CDN** : `include_plotlyjs='cdn'` réduit taille HTML de 80% (3 Mo → 400 Ko)
+- **Kaleido** : Package nécessaire pour export PNG/PDF depuis Plotly (nécessite restart kernel après install)
+- **Correspondance 90%** : Les 10% SIRET manquants dans fichier enrichissement sont probablement des créations récentes (2023-2024)
+
+### ⏭️ Prochaine session — Sprint 4
+- US-030 : Construire score de fragilité composite (0-100)
+- US-031 : Segmenter communes en clusters (K-means, 4 profils)
+- US-032 : Catégoriser communes en niveaux priorité (A/B/Non)
+- US-033 : Identifier commerces manquants par commune
+
+---
+
+🎉 **SPRINT 3 COMPLÉTÉ À 138% !** 🎉
+
+**Bilan global Sprint 3** :
+- ✅ **3 User Stories terminées** : US-020, US-021, US-022
+- 📊 **18/13 story points** (vélocité 138%)
+- 💾 **5 fichiers produits** : 2 datasets + 2 visualisations + 1 enrichissement
+- 🎯 **Découverte clé** : Fichier dates fermetures historiques (game changer)
+- ⏱️ **Durée** : 1 journée (au lieu de 1 semaine prévue)
+- 🚀 **Prêt pour Sprint 4** : Scoring et clustering
+
+---

@@ -71,12 +71,24 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 
 **Dataset final Sprint 2** : **98 369 établissements × 33 colonnes (56,25 Mo)**
 
-### 📋 Prochains sprints (Sprint 3-8)
+#### Sprint 3 — Exploration & KPI ✅ (COMPLÉTÉ 138%)
+- [x] **US-020 : Calcul indicateurs de base par commune**
+  - 647 communes agrégées avec 5 KPI (total, actifs, fermés, mortalité, densité)
+  - Taux mortalité moyen : 57,07%
+  - Validation cohérence : 100% ✅
+  
+- [x] **US-021 : Carte choroplèthe vacance commerciale**
+  - Carte interactive Plotly (410 Ko, HTML)
+  - 3 niveaux couleur : vert (dynamique) → orange (fragilisé) → rouge (difficulté)
+  - 63,7% communes en zone orange (fragilité généralisée)
+  
+- [x] **US-022 : Analyse évolution créations/fermetures 2015-2024**
+  - Graphique 3 courbes (créations, fermetures, solde net)
+  - Enrichissement dates fermetures historiques (90% correspondance)
+  - Pic COVID 2020 : 6 045 créations (+14,7%)
+  - Alerte déclin post-COVID : solde -79% (2020→2024)
 
-#### Sprint 3 — Exploration & KPI (13 SP)
-- [ ] Calcul indicateurs par commune (taux mortalité, solde créations/fermetures)
-- [ ] Carte interactive vacance commerciale
-- [ ] Analyse temporelle 2015-2024 avec rupture COVID
+**Dataset Sprint 3** : **communes_kpi_20260512.csv** (647 lignes × 13 colonnes, 72 Ko)
 
 #### Sprint 4 — Analyses avancées (21 SP)
 - [ ] Score de fragilité composite (0-100)
@@ -298,21 +310,23 @@ Interface accessible sur http://localhost:8501
 ### Métriques globales
 | Métrique | Valeur |
 |----------|--------|
-| **Sprints complétés** | 2 / 8 (25%) ✅ |
-| **Story points complétés** | 55 / 110 (50%) |
-| **User Stories terminées** | 12 / 44 (27%) |
+| **Sprints complétés** | 3 / 8 (38%) ✅ |
+| **Story points complétés** | 50 / 110 (45%) |
+| **User Stories terminées** | 15 / 44 (34%) |
 | **Vélocité Sprint 1** | 9 SP |
-| **Vélocité Sprint 2** | 23 SP (100%) |
+| **Vélocité Sprint 2** | 23 SP |
+| **Vélocité Sprint 3** | 18 SP (138%) |
+| **Vélocité moyenne** | 16,7 SP/sprint |
 
-### Sprint terminé : Sprint 2 — Nettoyage & Enrichissement ✅
-**Objectif** : Dataset enrichi complet (INSEE + NAF + EPCI + Dictionnaire)  
-**Résultat** : 23/23 SP (100%) — 5 US terminées
+### Sprint terminé : Sprint 3 — Exploration & KPI ✅
+**Objectif** : KPI communaux + visualisations temporelles et géographiques  
+**Résultat** : 18/13 SP (138%) — 3 US terminées + découverte enrichissement dates
 
 ### Prochains jalons
-- **Mi-Mai 2026** : Sprint 3 — Exploration & KPI
-- **Fin Mai 2026** : Sprint 4 — Scoring & clustering
-- **Mi-Juin 2026** : Sprint 5 — Dashboard MVP déployé
-- **Fin Juin 2026** : Sprints 6-8 — Finalisation & recommandations
+- **Mi-Mai 2026** : Sprint 4 — Scoring & clustering ⏭️
+- **Fin Mai 2026** : Sprint 5 — Dashboard MVP
+- **Mi-Juin 2026** : Sprint 6 — Déploiement
+- **Fin Juin 2026** : Sprints 7-8 — Finalisation
 
 ---
 
@@ -367,4 +381,4 @@ Ce projet est sous licence MIT. Voir LICENSE pour plus de détails.
 ---
 
 **Dernière mise à jour** : 12/05/2026  
-**Version** : 0.3.0 (Sprint 2 complété à 100%)
+**Version** : 0.4.0 (Sprint 3 complété à 138%)

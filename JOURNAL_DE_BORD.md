@@ -197,3 +197,89 @@
 - Sprint Retrospective : Bilan vélocité et amélioration continue
 
 ---
+---
+
+## 📅 Session du 12/05/2026 — Sprint 2 (fin)
+
+### ⏱️ Durée : ~3h
+### 🎯 Sprint : Sprint 2 — Finalisation
+### 📋 US : US-013, US-014
+
+### ✅ Tâches réalisées
+- [x] US-013 : Génération dictionnaire de données (30 colonnes documentées)
+- [x] US-013 : Correction bug naf_classe_libelle (55,69% → 100%)
+- [x] US-013 : Sauvegarde dictionnaire CSV (4,88 Ko)
+- [x] US-013 : Sauvegarde dataset corrigé (52,35 Mo, 30 colonnes)
+- [x] US-014 : Exploration fichier EPCI 2026 (34 871 lignes)
+- [x] US-014 : Filtrage département 59 (17 EPCI, 651 communes)
+- [x] US-014 : Création table EPCI-Communes (651 lignes × 5 colonnes)
+- [x] US-014 : Jointure EPCI avec dataset principal (99,99% complétude)
+- [x] US-014 : Sauvegarde dataset final avec EPCI (56,25 Mo, 33 colonnes)
+- [x] Sprint 2 complété à 100% (23/23 story points)
+
+### 📁 Fichiers créés/modifiés
+- `notebooks/02_sprint2_nettoyage_enrichissement.ipynb` — US-013 et US-014 ajoutées
+- `data/processed/dictionnaire_donnees_20260512.csv` — 4,88 Ko, 30 lignes
+- `data/processed/etablissements_enrichis_complet_20260512.csv` — 52,35 Mo, 30 colonnes (correction NAF)
+- `data/processed/epci_communes_20260512.csv` — 35,71 Ko, 651 lignes × 5 colonnes
+- `data/processed/etablissements_enrichis_final_20260512.csv` — 56,25 Mo, 98 369 × 33 colonnes
+- `data/raw/epcicom2026.xlsx` — référentiel EPCI (2 885 Ko)
+
+### 💬 Décisions prises
+- **Correction NAF** : naf_classe_libelle manquant pour codes avec suffixe Z → rempli avec naf_libelle (43 592 lignes corrigées)
+- **Optimisation EPCI** : Exclusion nb_communes et total_pop_mun (calculables) → seulement 3 colonnes ajoutées au lieu de 5
+- **Fichier séparé** : Table de référence EPCI-Communes créée pour filtres dashboard (651 lignes, léger)
+- **17 EPCI identifiés** : 8 CA, 7 CC, 1 METRO (MEL - 95 communes), 1 CU (Dunkerque - 17 communes)
+
+### 🚧 Blocages rencontrés
+- **Problème** : naf_classe_libelle à 55,69% de complétude (inattendu)
+  **Solution** : Codes NAF avec suffixe Z sont des classes sans sous-classes → remplissage automatique
+  
+- **Problème** : Fichier EPCI nommé epcicom2026.xlsx (avec C) au lieu de epdcom2026
+  **Solution** : Correction du chemin dans le code
+  
+- **Problème** : Kernel Jupyter bloqué sur environnement 'base'
+  **Solution** : Changement vers environnement .venv (Python 3.14.3)
+
+### 📊 Métriques
+- **Story points terminés** : 5 (US-013: 2 pts, US-014: 3 pts)
+- **Total Sprint 2** : 23/23 story points (100%) ✅
+- **Dataset final** : 98 369 lignes × 33 colonnes (56,25 Mo)
+- **Complétude finale** :
+  - NAF (après correction) : 100% (naf_classe_libelle fixé)
+  - EPCI : 99,99% (1 commune manquante : Bermeries)
+  - Complétude moyenne globale : 92,72%
+- **EPCI du Nord** : 17 intercommunalités, 651 communes
+- **Fichiers produits Sprint 2** : 9 fichiers (3 datasets intermédiaires + 1 final + 3 métadonnées + 1 dictionnaire + 1 référence EPCI)
+
+### 🔄 Git
+- `feat: Sprint 2 - US-013 dictionnaire données (30 colonnes, correction naf_classe_libelle)`
+- `feat: Sprint 2 - US-014 fichier EPCI (17 EPCI, 651 communes, 33 colonnes final)`
+- `docs: update README, JOURNAL, .gitignore - Sprint 2 complete 100%`
+
+### 📝 Notes & Apprentissages
+- **Dictionnaire de données** : 8 dimensions d'information par colonne (nom, type, source, description, valeurs, exemple, complétude, notes)
+- **Bug NAF détecté** : Codes avec suffixe Z (47.25Z, 47.77Z...) sont des classes finales sans décomposition en sous-classes
+- **EPCI MEL** : 95 communes (14,6% du département), plus grand EPCI du Nord
+- **Optimisation taille** : Exclusion colonnes calculables limite augmentation dataset à +7,4% au lieu de +12%
+- **Bermeries** : Commune absente de tous les référentiels (INSEE population, EPCI) → commune nouvelle ou fusionnée récente
+
+### ⏭️ Prochaine session — Sprint 3
+- US-020 : Calcul indicateurs de base par commune (Nb_actifs, Nb_fermés, Taux_mortalité)
+- US-021 : Création carte choroplèthe vacance commerciale
+- US-022 : Analyse évolution créations/fermetures 2015-2024
+- US-023 : Identification rupture tendance COVID (2020-2021)
+
+---
+
+🎉 **SPRINT 2 COMPLÉTÉ À 100% !** 🎉
+
+**Bilan global Sprint 2** :
+- ✅ **5 User Stories terminées** : US-010, US-011, US-012, US-013, US-014
+- 📊 **23/23 story points** (vélocité 100%)
+- 💾 **Dataset final** : 98 369 établissements × 33 colonnes (56,25 Mo)
+- 📁 **9 fichiers produits** : 1 dataset final + 3 intermédiaires + 3 métadonnées + 1 dictionnaire + 1 référence EPCI
+- ⏱️ **Durée** : 3 sessions (11-12 mai 2026)
+- 🚀 **Prêt pour Sprint 3** : Exploration & KPI
+
+---

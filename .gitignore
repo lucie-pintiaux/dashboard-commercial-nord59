@@ -301,6 +301,15 @@ data/raw/indic-struct-distrib-revenu-2021-COMMUNES_csv/
 !data/raw/sirene_nord59_20260507.csv
 !data/raw/METADATA.md
 
+# Fichiers EPCI
+!data/raw/epcicom2026.xlsx
+
+# Fichiers finaux processed (garder les plus récents uniquement)
+!data/processed/etablissements_enrichis_final_20260512.csv
+!data/processed/dictionnaire_donnees_20260512.csv
+!data/processed/epci_communes_20260512.csv
+!data/processed/METADATA_*.md
+
 # === DATA - Fichiers temporaires ===
 data/temp/
 data/cache/

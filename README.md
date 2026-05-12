@@ -44,7 +44,7 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 - [x] **98 369 établissements** collectés (39% actifs, 61% fermés)
 - [x] 647/648 communes couvertes
 
-#### Sprint 2 — Nettoyage & Enrichissement
+#### Sprint 2 — Nettoyage & Enrichissement ✅ (COMPLÉTÉ 100%)
 - [x] **US-010 : Nettoyage complet** 
   - Suppression doublons, traitement valeurs manquantes
   - Création colonnes temporelles (dates création/fermeture)
@@ -58,13 +58,18 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 - [x] **US-012 : Enrichissement hiérarchie NAF complète**
   - 11 colonnes NAF (section, division, groupe, classe, sous-classe + libellés)
   - 100% de correspondance (87 codes référentiel + 10 codes anciens mappés)
-  - Hiérarchie complète pour analyses sectorielles
+  - Correction bug naf_classe_libelle (55% → 100%)
+  
+- [x] **US-013 : Dictionnaire de données**
+  - 30 colonnes documentées (8 dimensions d'information)
+  - Fichier CSV 4,88 Ko pour référence développeurs
+  
+- [x] **US-014 : Fichier codes EPCI/CA**
+  - 17 EPCI identifiés (8 CA, 7 CC, 1 METRO, 1 CU)
+  - 651 communes couvertes (99,99% complétude)
+  - 3 colonnes EPCI ajoutées au dataset (optimisé)
 
-**Dataset final actuel** : **98 369 établissements × 30 colonnes (49 Mo)**
-
-### 🔄 En cours (Sprint 2 — fin)
-- [ ] US-013 : Création dictionnaire de données complet
-- [ ] US-014 : Fichier codes EPCI/Communautés d'Agglomération
+**Dataset final Sprint 2** : **98 369 établissements × 33 colonnes (56,25 Mo)**
 
 ### 📋 Prochains sprints (Sprint 3-8)
 
@@ -106,7 +111,7 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 ### Dataset principal
 | Source | Périmètre | Lignes | Colonnes | Taille |
 |--------|-----------|--------|----------|--------|
-| **SIRENE StockEtablissement** | Dept 59, NAF 47xx | 98 369 | 30 | 49 Mo |
+| **SIRENE StockEtablissement** | Dept 59, NAF 47xx | 98 369 | 33 | 56 Mo |
 
 ### Enrichissements
 
@@ -118,15 +123,19 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 
 #### 2. Hiérarchie NAF révision 2 (11 colonnes)
 - **Référentiel INSEE** : 1 728 codes tous secteurs, 87 codes division 47
-- **Complétude** : 100% (996 codes anciens mappés manuellement)
+- **Complétude** : 100% (996 codes anciens mappés + correction naf_classe_libelle)
 - **5 niveaux** : Section G → Division 47 → Groupe (47.1-47.9) → Classe (47.11) → Sous-classe (47.11A)
+
+#### 3. EPCI/Communautés d'Agglomération (3 colonnes)
+- **Référentiel EPCI 2026** : 17 EPCI du Nord, 651 communes
+- **Complétude** : 99,99% (même commune manquante : Bermeries)
+- **Types** : MEL (95 communes), 8 CA, 7 CC, 1 CU
 
 ### Périmètre géographique
 - **Département** : Nord (59)
-- **Communes** : 647/648 (99,85%)
+- **Communes** : 650/651 couvertes (99,85%)
 - **EPCI** : 17 intercommunalités
 - **Secteur d'activité** : NAF 47 (Commerce de détail, hors automobiles/motocycles)
-
 ---
 
 ## 🛠️ Stack Technique
@@ -159,9 +168,15 @@ dashboard-commercial-nord59/
 │   ├── raw/                    # SIRENE brut + référentiels
 │   │   ├── sirene_nord59_20260507.csv (22 Mo)
 │   │   ├── naf_rev2_libelles.xls (305 Ko)
+│   │   ├── epcicom2026.xlsx (2,9 Mo)
+│   │   ├── insee_extracted/    # Fichiers INSEE (79 Mo, .gitignore)
 │   │   └── METADATA.md
 │   ├── processed/              # Datasets enrichis
-│   │   ├── etablissements_enrichis_complet_20260511.csv (49 Mo)
+│   │   ├── etablissements_enrichis_final_20260512.csv (56 Mo) ← FINAL
+│   │   ├── dictionnaire_donnees_20260512.csv (5 Ko)
+│   │   ├── epci_communes_20260512.csv (36 Ko)
+│   │   ├── METADATA_nettoyage_20260511.md
+│   │   ├── METADATA_enrichissement_20260511.md
 │   │   └── METADATA_enrichissement_complet_20260511.md
 │   └── external/               # Données tierces
 ├── docs/                       # Documentation
@@ -283,18 +298,19 @@ Interface accessible sur http://localhost:8501
 ### Métriques globales
 | Métrique | Valeur |
 |----------|--------|
-| **Sprints complétés** | 2 / 8 (25%) |
-| **Story points complétés** | 32 / 110 (29%) |
-| **User Stories terminées** | 7 / 44 (16%) |
-| **Vélocité moyenne** | 16 SP/sprint |
+| **Sprints complétés** | 2 / 8 (25%) ✅ |
+| **Story points complétés** | 55 / 110 (50%) |
+| **User Stories terminées** | 12 / 44 (27%) |
+| **Vélocité Sprint 1** | 9 SP |
+| **Vélocité Sprint 2** | 23 SP (100%) |
 
-### Sprint en cours : Sprint 2 (fin) — US-013, US-014
-**Objectif** : Dictionnaire de données + Fichier EPCI  
-**Progression** : 18/23 SP (78%)
+### Sprint terminé : Sprint 2 — Nettoyage & Enrichissement ✅
+**Objectif** : Dataset enrichi complet (INSEE + NAF + EPCI + Dictionnaire)  
+**Résultat** : 23/23 SP (100%) — 5 US terminées
 
 ### Prochains jalons
-- **Fin Mai 2026** : Sprint 3 — Exploration & KPI
-- **Début Juin 2026** : Sprint 4 — Scoring & clustering
+- **Mi-Mai 2026** : Sprint 3 — Exploration & KPI
+- **Fin Mai 2026** : Sprint 4 — Scoring & clustering
 - **Mi-Juin 2026** : Sprint 5 — Dashboard MVP déployé
 - **Fin Juin 2026** : Sprints 6-8 — Finalisation & recommandations
 
@@ -350,5 +366,5 @@ Ce projet est sous licence MIT. Voir LICENSE pour plus de détails.
 
 ---
 
-**Dernière mise à jour** : 11/05/2026  
-**Version** : 0.2.0 (Sprint 2 complété)
+**Dernière mise à jour** : 12/05/2026  
+**Version** : 0.3.0 (Sprint 2 complété à 100%)

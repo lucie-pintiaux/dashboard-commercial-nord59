@@ -1,0 +1,31 @@
+﻿nom_colonne,type,source,description,valeurs_possibles,exemple,completude_pct,notes
+siret,string,SIRENE,Identifiant unique de l'établissement (14 chiffres : 9 SIREN + 5 NIC),Numérique 14 chiffres,45440997000018,100.0,Clé primaire du dataset
+code_commune,string,SIRENE,Code INSEE de la commune (5 chiffres),59001 à 59658,59178 (Douai),100.0,Clé de jointure avec données INSEE
+code_postal,string,SIRENE,Code postal de l'établissement,59000 à 59999,59500,100.0,Peut différer du code commune (adresse boîte postale)
+nom_commune,string,SIRENE,Nom de la commune (source SIRENE),Texte libre,DOUAI,100.0,Orthographe SIRENE peut différer de l'INSEE
+nom_commune_insee,string,INSEE,Nom officiel de la commune (source INSEE),Texte libre,Douai,99.99,Orthographe officielle INSEE (casse normalisée)
+code_activite,string,SIRENE,Code NAF révision 2 de l'activité principale,47.11A à 47.99Z (division 47),47.11B (Commerce alimentation générale),100.0,Inclut 10 codes anciens (47.01-47.10) mappés manuellement
+naf_section,string,NAF Rev2,Section NAF (niveau 1),G,G,100.0,Tous les établissements sont en section G (Commerce)
+naf_division,string,NAF Rev2,Division NAF (niveau 2),47,47,100.0,Commerce de détail hors automobiles
+naf_groupe,string,NAF Rev2,Groupe NAF (niveau 3 : division.X),47.0 à 47.9,47.1 (Magasin non spécialisé),100.0,6 groupes principaux dans la division 47
+naf_classe,string,NAF Rev2,Classe NAF (niveau 4 : division.XX),47.11 à 47.99,47.11 (Commerce détail magasin non spécialisé),100.0,87 classes dans le référentiel division 47
+naf_libelle,string,NAF Rev2,Libellé complet de l'activité (sous-classe),Texte libre,Commerce d'alimentation générale,100.0,Version longue (jusqu'à 100 caractères)
+naf_section_libelle,string,NAF Rev2,Libellé de la section,Texte libre,COMMERCE ; RÉPARATION D'AUTOMOBILES ET DE MOTOCYCLES,100.0,Identique pour tous les établissements (section G)
+naf_division_libelle,string,NAF Rev2,Libellé de la division,Texte libre,"Commerce de détail, à l'exception des automobiles et des motocycles",100.0,Identique pour tous les établissements (division 47)
+naf_groupe_libelle,string,NAF Rev2,Libellé du groupe,Texte libre,Commerce de détail en magasin non spécialisé,100.0,6 libellés de groupe distincts
+naf_classe_libelle,string,NAF Rev2,Libellé de la classe,Texte libre,Commerce de détail en magasin non spécialisé à prédominance alimentaire,100.0,87 libellés de classe distincts
+naf_sous_classe_libelle,string,NAF Rev2,Libellé de la sous-classe (identique à naf_libelle),Texte libre,Commerce d'alimentation générale,100.0,Doublon de naf_libelle pour cohérence hiérarchique
+etat_etablissement,string,SIRENE,État administratif de l'établissement,"A (Actif), F (Fermé)",A,100.0,"39% actifs, 61% fermés (snapshot mai 2026)"
+date_creation,datetime,SIRENE,Date de création de l'établissement,ISO 8601 (YYYY-MM-DD),2015-03-15,99.02,Présente pour 99% des établissements
+annee_creation,integer,Calculé,Année de création (extraction de date_creation),1900 à 2026,2015,99.02,Facilite les analyses temporelles
+date_fermeture,datetime,SIRENE (calculé),Date de fermeture (si etat=F),ISO 8601 ou NULL,2024-03-30,60.09,"Correspond à date_dernier_traitement si fermé, NULL sinon"
+annee_fermeture,integer,Calculé,Année de fermeture (extraction de date_fermeture),2015 à 2026 ou NULL,2024,60.09,NULL pour établissements actifs
+date_dernier_traitement,datetime,SIRENE,Date de dernière mise à jour dans SIRENE,ISO 8601,2024-03-30T07:54:30,100.0,Indique la fraîcheur de la donnée SIRENE
+coordonnee_lambert_x,float,SIRENE,Coordonnée X en projection Lambert 93,Float (600000 à 750000 pour Nord),705989.29,86.59,86% de complétude (13% non géolocalisés)
+coordonnee_lambert_y,float,SIRENE,Coordonnée Y en projection Lambert 93,Float (7000000 à 7100000 pour Nord),7029995.45,86.59,86% de complétude (13% non géolocalisés)
+population,integer,INSEE Recensement 2021,Population municipale de la commune,Integer (50 à 150000),40250 (Douai),99.99,"99,99% complétude (1 commune manquante : Bermeries)"
+taux_chomage,float,INSEE Base CC 2021,Taux de chômage 15-64 ans (%),Float (0 à 100),22.32,100.0,100% complétude
+nb_chomeurs_15_64,float,INSEE Base CC 2021,Nombre de chômeurs 15-64 ans,Float (décimales dues au secret statistique),344.63,100.0,100% complétude (valeurs arrondies INSEE pour secret stat)
+nb_actifs_15_64,float,INSEE Base CC 2021,Nombre d'actifs 15-64 ans,Float (décimales dues au secret statistique),1791.60,100.0,100% complétude (valeurs arrondies INSEE pour secret stat)
+revenu_median,float,INSEE FiLoSoFi 2021,Revenu médian déclaré par unité de consommation (€),Float (5000 à 50000) ou NULL,6410.0,90.29,90% complétude (secret statistique communes < 50 ménages)
+taux_pauvrete,float,INSEE FiLoSoFi 2021,Taux de pauvreté à 60% du revenu médian,Float (0 à 100) ou NULL,NULL,0.0,"0% complétude (fichier source PAUVRES inadapté, à corriger)"

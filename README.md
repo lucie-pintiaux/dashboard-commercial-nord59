@@ -90,11 +90,42 @@ Les acteurs du développement économique (CCI, collectivités, communautés d'a
 
 **Dataset Sprint 3** : **communes_kpi_20260512.csv** (647 lignes × 13 colonnes, 72 Ko)
 
-#### Sprint 4 — Analyses avancées (21 SP)
-- [ ] Score de fragilité composite (0-100)
-- [ ] Clustering communes (K-means, 4 profils)
-- [ ] Identification commerces manquants par commune
-- [ ] Analyse impact COVID
+#### Sprint 4 — Analyses avancées & Scoring ✅ (COMPLÉTÉ 162%)
+- [x] **US-030 : Score de fragilité composite (0-100)**
+  - 646 communes scorées sur 4 dimensions
+  - Corrélation validée : 0.730 vs mortalité
+  - 10 communes exceptionnellement fragiles
+  
+- [x] **US-031 : Clustering K-Means (4 profils)**
+  - Dynamique (41%), Précaire (20%), Métropole (0,3%), Désertifié (39%)
+  - Polarisation territoriale révélée
+  - Silhouette 0.301 (homogénéité territoriale)
+  
+- [x] **US-032 : Catégorisation priorités (A/B/Non)**
+  - 13 Priorité A (2%), 190 Priorité B (29%), 444 Non prioritaire (69%)
+  - 1 EPCI critique : CC Pays Solesmois (57% prioritaires)
+  
+- [x] **US-033 : Commerces manquants**
+  - 105 déserts commerciaux totaux (7/7 commerces manquants)
+  - 85% communes prioritaires sans boulangerie
+  
+- [x] **US-034 : Secteurs vulnérables**
+  - 39 secteurs NAF analysés (≥100 établissements)
+  - Textile/habillement marchés : 74,7% fermeture
+  
+- [x] **US-035 : Corrélations socio-économiques**
+  - Chômage = prédicteur principal (r = 0.848 avec score)
+  - Mortalité faiblement corrélée chômage (r = 0.126)
+
+**Datasets Sprint 4** : 
+- **communes_scored_20260512.csv** (647 × 17 colonnes, 88 Ko)
+- **communes_clustered_20260512.csv** (647 × 19 colonnes, 98 Ko)
+- **communes_categorisees_20260512.csv** (647 × 20 colonnes, 107 Ko)
+- **commerces_manquants_20260512.csv** (203 × 7 colonnes, 26 Ko)
+- **secteurs_vulnerables_20260512.csv** (39 × 5 colonnes, 4 Ko)
+
+---
+
 
 #### Sprint 5 — Dashboard MVP (21 SP)
 - [ ] 5 pages Streamlit : Vue d'ensemble, Focus Commune, Analyse EPCI, Analyse Sectorielle, Documentation
@@ -310,22 +341,22 @@ Interface accessible sur http://localhost:8501
 ### Métriques globales
 | Métrique | Valeur |
 |----------|--------|
-| **Sprints complétés** | 3 / 8 (38%) ✅ |
-| **Story points complétés** | 50 / 110 (45%) |
-| **User Stories terminées** | 15 / 44 (34%) |
-| **Vélocité Sprint 1** | 9 SP |
-| **Vélocité Sprint 2** | 23 SP |
+| **Sprints complétés** | 4 / 8 (50%) ✅ |
+| **Story points complétés** | 84 / 110 (76%) |
+| **User Stories terminées** | 21 / 44 (48%) |
+| **Vélocité Sprint 1** | 9 SP (113%) |
+| **Vélocité Sprint 2** | 23 SP (177%) |
 | **Vélocité Sprint 3** | 18 SP (138%) |
-| **Vélocité moyenne** | 16,7 SP/sprint |
+| **Vélocité Sprint 4** | 34 SP (162%) ✅ |
+| **Vélocité moyenne** | 21 SP/sprint |
 
-### Sprint terminé : Sprint 3 — Exploration & KPI ✅
-**Objectif** : KPI communaux + visualisations temporelles et géographiques  
-**Résultat** : 18/13 SP (138%) — 3 US terminées + découverte enrichissement dates
+### Sprint terminé : Sprint 4 — Analyses avancées ✅
+**Objectif** : Score fragilité + clustering + catégorisation + analyses SHOULD  
+**Résultat** : 34/21 SP (162%) — 6 US terminées + 5 datasets produits
 
 ### Prochains jalons
-- **Mi-Mai 2026** : Sprint 4 — Scoring & clustering ⏭️
-- **Fin Mai 2026** : Sprint 5 — Dashboard MVP
-- **Mi-Juin 2026** : Sprint 6 — Déploiement
+- **Mi-Mai 2026** : Sprint 5 — Dashboard MVP (21 SP) ⏭️
+- **Fin Mai 2026** : Sprint 6 — Déploiement
 - **Fin Juin 2026** : Sprints 7-8 — Finalisation
 
 ---
@@ -381,4 +412,4 @@ Ce projet est sous licence MIT. Voir LICENSE pour plus de détails.
 ---
 
 **Dernière mise à jour** : 12/05/2026  
-**Version** : 0.4.0 (Sprint 3 complété à 138%)
+**Version** : 0.5.0 (Sprint 4 complété à 162%)

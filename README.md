@@ -158,12 +158,50 @@ dashboard-commercial-nord59/<br>
 
 ---
 
-## 🚀 Déploiement (À venir - Sprint 6)
+## 🚀 Déploiement
 
-Déploiement prévu sur **Streamlit Cloud** :
-- URL publique accessible 24/7
-- Mise à jour automatique depuis GitHub
-- Accès gratuit consultation
+### Dashboard en production
+
+**URL publique** : **[https://dashboard-commercial-nord59.streamlit.app](https://dashboard-commercial-nord59.streamlit.app)** 🌐
+
+Le dashboard est **accessible 24/7** depuis n'importe quel navigateur (desktop/mobile).
+
+### Caractéristiques déploiement
+
+- ✅ **Hébergement** : Streamlit Cloud (gratuit)
+- ✅ **Déploiement continu** : Automatique à chaque push GitHub
+- ✅ **Disponibilité** : 24/7
+- ✅ **Performance** : < 3 sec chargement/page
+- ✅ **Données** : Fichier 55 MB hébergé via Git LFS
+
+### Redéploiement local
+
+Si vous souhaitez exécuter le dashboard localement :
+
+```bash
+# Cloner le repository
+git clone https://github.com/lucie-pintiaux/dashboard-commercial-nord59.git
+cd dashboard-commercial-nord59
+
+# Installer Git LFS (si pas déjà fait)
+git lfs install
+
+# Télécharger fichiers LFS
+git lfs pull
+
+# Créer environnement virtuel
+python -m venv venv
+venv\Scripts\activate  # Windows
+
+# Installer dépendances
+pip install -r requirements.txt
+
+# Lancer dashboard
+cd src/dashboard
+python -m streamlit run app.py
+```
+
+**Note** : Le fichier `etablissements_enrichis_final_20260513.csv` (55 MB) est hébergé via **Git LFS**. La commande `git lfs pull` télécharge automatiquement ce fichier.
 
 ---
 
@@ -191,8 +229,8 @@ Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING
 
 ## 📞 Contact
 
-- GitHub : [@votre-username](https://github.com/votre-username)
-- Email : votre.email@example.com
+- GitHub : https://github.com/lucie-pintiaux
+- Email : l.pintiaux@gmail.com
 
 ---
 

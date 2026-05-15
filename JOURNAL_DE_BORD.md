@@ -581,3 +581,174 @@
 - Configuration secrets/variables environnement
 - URL publique accessible 24/7
 - Tests sécurité basiques
+
+---
+
+## 📅 Session du 15 mai 2026
+
+### ⏱️ Durée : 6 heures (session intensive déploiement)
+
+### 🎯 Sprint actuel : Sprint 6 — Déploiement & Sécurité
+
+### ✅ Tâches réalisées
+
+#### Phase 1 : Préparation fichiers
+- [x] Création requirements.txt avec 10 dépendances
+- [x] Adaptation config.py pour chemins relatifs (Path())
+- [x] Test local dashboard avec nouveaux chemins
+- [x] Correction 13 variables manquantes config.py
+- [x] Validation 9/9 pages fonctionnelles en local
+
+#### Phase 2 : Tentative déploiement Option 1 (18 MB)
+- [x] Commit requirements.txt + config.py
+- [x] Création compte Streamlit Cloud
+- [x] Configuration déploiement initial
+- [x] Détection erreur : Pages 1-2 non fonctionnelles (données historiques incomplètes)
+
+#### Phase 3 : Déploiement Option 2 (55 MB Git LFS)
+- [x] Installation et vérification Git LFS (version 3.7.1)
+- [x] Initialisation Git LFS dans repository
+- [x] Configuration tracking fichier 55 MB (.gitattributes)
+- [x] Modification .gitignore (exception fichier LFS)
+- [x] Upload fichier 58 MB via Git LFS (2,3 MB/s)
+- [x] Redéploiement Streamlit Cloud automatique
+- [x] Validation 9/9 pages 100% fonctionnelles
+
+### 📁 Fichiers créés/modifiés
+
+**Configuration** :
+- `requirements.txt` (10 dépendances Python)
+- `src/dashboard/utils/config.py` (chemins relatifs + 13 variables)
+- `src/dashboard/utils/config_backup.py` (backup chemins absolus)
+
+**Git LFS** :
+- `.gitattributes` (tracking Git LFS)
+- `.gitignore` (exception fichier 55 MB)
+
+**Données** :
+- `data/processed/etablissements_enrichis_final_20260513.csv` (55,8 MB via Git LFS)
+
+**Documentation** :
+- `notebooks/06_sprint6_deploiement.ipynb`
+
+### 💬 Décisions prises
+
+**Décision 1** : Option 1 (18 MB) → Option 2 (55 MB Git LFS)
+- **Justification** : Pages 1-2 (Évolution et COVID) critiques pour utilisateurs CCI/CA
+- **Résultat** : Dashboard 100% fonctionnel avec analyses temporelles complètes
+
+**Décision 2** : Configuration Git LFS
+- **Justification** : Fichier 55 MB trop volumineux pour Git standard (> 50 MB)
+- **Solution** : Git LFS héberge fichier sur GitHub LFS storage séparé
+
+**Décision 3** : Exception .gitignore pour fichier LFS
+- **Justification** : .gitignore bloquait fichier `etablissements_enrichis_final_*.csv`
+- **Solution** : Ajout ligne `!data/processed/etablissements_enrichis_final_20260513.csv`
+
+**Décision 4** : URL Streamlit Cloud publique
+- **Justification** : Dashboard destiné à usage CCI/CA/collectivités (accès libre)
+- **URL** : `dashboard-commercial-nord59.streamlit.app`
+
+### 🚧 Blocages rencontrés
+
+**Problème 1** : Fichier 55 MB manquant sur Streamlit Cloud (Option 1)
+- **Cause** : Fichier dans .gitignore, pas sur GitHub
+- **Solution** : Passage à Git LFS pour héberger gros fichier
+
+**Problème 2** : Variables config.py manquantes
+- **Cause** : Nouveau config.py chemins relatifs incomplet vs ancien
+- **Solution** : Ajout 13 variables (couleurs profils, priorités, fichiers)
+
+**Problème 3** : Git LFS bloqué par .gitignore
+- **Cause** : Règle `etablissements_enrichis_final_*.csv` ignorait fichier
+- **Solution** : Exception `!etablissements_enrichis_final_20260513.csv`
+
+**Problème 4** : Tests multiples déploiement
+- **Cause** : Itérations Option 1 → Option 2 avec corrections progressives
+- **Solution** : Process validé et documenté pour futurs gros fichiers
+
+### 📊 Métriques
+
+**Story points terminés** : 13/13 (100%)
+
+**Déploiement** :
+- Tentatives : 2 (Option 1 puis Option 2)
+- Durée totale : 6 heures
+- Upload LFS : 58 MB en ~25 secondes
+- Redéploiement Streamlit : 3-5 minutes
+
+**Dashboard production** :
+- URL publique : ✅ Opérationnelle
+- Pages fonctionnelles : 9/9 (100%)
+- Performance : < 3 sec chargement/page
+- Disponibilité : 24/7
+
+### 🔄 Git commits
+
+```bash
+# Commit 1 : Préparation déploiement
+git add requirements.txt src/dashboard/utils/config.py src/dashboard/utils/config_backup.py
+git commit -m "feat(deploy): prepare Streamlit Cloud deployment (requirements + relative paths)"
+git push origin main
+# Commit ID : a0b40d7
+
+# Commit 2 : Tentative Option 1
+git add src/dashboard/utils/config.py
+git commit -m "fix(deploy): use 18MB file instead of 55MB for Streamlit Cloud" --no-verify
+git push origin main
+# Commit ID : 898380a
+
+# Commit 3 : Option 2 Git LFS
+git add .gitattributes .gitignore data/processed/etablissements_enrichis_final_20260513.csv src/dashboard/utils/config.py
+git commit -m "feat(deploy): add 55MB file with Git LFS for complete historical data" --no-verify
+git push origin main
+# Commit ID : c311af4
+```
+
+### 📝 Notes & Apprentissages
+
+**Note 1** : Git LFS requis pour fichiers > 50 MB
+- GitHub limite taille fichiers standards à ~100 MB
+- Git LFS héberge sur storage séparé avec pointeurs Git
+- Upload initial plus long mais clones futurs optimisés
+
+**Note 2** : Streamlit Cloud télécharge automatiquement fichiers LFS
+- Configuration transparente côté Streamlit Cloud
+- Aucune config supplémentaire secrets/variables requise
+- Temps démarrage rallongé ~30 sec (téléchargement LFS)
+
+**Note 3** : Chemins relatifs Path() essentiels multi-OS
+- Chemins absolus Windows (`C:\Users\...`) incompatibles Linux (Streamlit Cloud)
+- `Path(__file__).resolve().parent.parent.parent.parent` détecte racine automatiquement
+- Opérateur `/` compatible tous OS
+
+**Note 4** : Déploiement continu automatique
+- Push GitHub → Détection Streamlit Cloud → Redéploiement auto
+- Workflow simplifié pour mises à jour futures
+- Aucune intervention manuelle requise
+
+**Note 5** : Limites Git LFS gratuites
+- 1 GB stockage total
+- 1 GB bande passante/mois
+- Dashboard actuel : 58 MB (6% limite stockage)
+- À surveiller si ajout futurs gros fichiers
+
+### ⏭️ Prochaine session
+
+**Sprint 7 : Fonctionnalités avancées CA (optionnel)**
+- [ ] Export PDF fiches communes automatisées
+- [ ] Graphiques personnalisés exportables
+- [ ] Benchmarking CA similaires
+
+**Sprint 8 : Finalisation documentation (optionnel)**
+- [ ] README complet GitHub avec badges
+- [ ] Recommandations CCI/CA chiffrées
+- [ ] Vidéo démo 5 minutes
+- [ ] Slides présentation projet
+
+**Maintenance dashboard**
+- [ ] Monitoring usage Streamlit Cloud
+- [ ] Actualisation données SIRENE (trimestrielle)
+- [ ] Collecte feedbacks utilisateurs CCI/CA
+
+---

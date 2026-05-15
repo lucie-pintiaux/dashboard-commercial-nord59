@@ -115,6 +115,8 @@ data/raw/indic-struct-distrib-revenu-2021-COMMUNES_csv/
 # Établissements complets (> 50 MB)
 data/processed/etablissements_enrichis_complet_*.csv
 data/processed/etablissements_enrichis_final_*.csv
+# Exception Git LFS : fichier 55 MB avec dates historiques complètes
+!data/processed/etablissements_enrichis_final_20260513.csv
 data/processed/etablissements_avec_gps_*.csv
 
 # Fichiers enrichissement intermédiaires

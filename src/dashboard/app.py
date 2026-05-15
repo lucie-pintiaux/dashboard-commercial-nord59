@@ -164,12 +164,10 @@ st.markdown("---")
 
 st.markdown(config.FOOTER_TEXT)
 
-st.markdown(
-    """
-<div style='text-align: center; color: #666; font-size: 0.9em; margin-top: 2em;'>
-    <p>Dashboard développé dans le cadre du projet de stage M2 Data Science</p>
-    <p>CCI Grand Hainaut × Université de Valenciennes</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
+st.markdown("---")
+st.markdown("**Dashboard Commercial Nord 59** | Données SIRENE 2024 | Développé par Lucie Pintiaux")
+col1, col2 = st.columns(2)
+with col1:
+    st.markdown("📊 [GitHub](https://github.com/lucie-pintiaux/dashboard-commercial-nord59)")
+with col2:
+    st.markdown("📧 Contact : l.pintiaux@gmail.com")

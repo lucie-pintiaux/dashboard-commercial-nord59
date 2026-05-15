@@ -13,7 +13,7 @@
 | **Should Have** | 15 |
 | **Could Have** | 5 |
 | **Total Story Points** | 139 SP |
-| **Story Points complétés** | 84 SP (60%) |
+| **Story Points complétés** | 118 SP (85%) |
 
 ---
 
@@ -37,14 +37,14 @@
 | Sprint 2 | Nettoyage | 23 | 32 | ✅ Complété (177%) |
 | Sprint 3 | Exploration | 18 | 50 | ✅ Complété (138%) |
 | Sprint 4 | Analyses | 34 | 84 | ✅ Complété (162%) |
-| Sprint 5 | Dashboard MVP | 21 | 105 | 🔜 À venir |
-| Sprint 6 | Déploiement | 13 | 118 | 📅 Planifié |
+| Sprint 5 | Dashboard MVP | 21 | 105 | ✅ Complété |
+| Sprint 6 | Déploiement | 13 | 118 | ✅ Complété |
 | Sprint 7 | Avancées CA | 13 | 131 | 📅 Planifié |
 | Sprint 8 | Finalisation | 8 | 139 | 📅 Planifié |
 
 **Total** : 139 story points sur 8 semaines  
-**Complété** : 84 / 139 SP (60%)  
-**Vélocité moyenne** : 21 SP/sprint
+**Complété** : 118 / 139 SP (85%)  
+**Vélocité moyenne** : 19,7 SP/sprint
 
 ---
 
@@ -315,14 +315,15 @@
 
 | Priorité | Nb US | Story Points | Complétés | Restants |
 |----------|-------|--------------|-----------|----------|
-| 🔴 MUST | 24 | 76 SP | 58 SP | 18 SP |
-| 🟠 SHOULD | 15 | 52 SP | 26 SP | 26 SP |
+| 🔴 MUST | 24 | 76 SP | 76 SP | 0 SP |
+| 🟠 SHOULD | 15 | 52 SP | 42 SP | 10 SP |
 | 🟡 COULD | 5 | 11 SP | 0 SP | 11 SP |
-| **Total** | **44** | **139 SP** | **84 SP** | **55 SP** |
+| **Total** | **44** | **139 SP** | **118 SP** | **21 SP** |
 
 ---
 
 **📅 Document créé le** : 12/05/2026  
+**📅 Dernière mise à jour** : 15/05/2026 (Sprint 6 terminé)  
 **✍️ Auteur** : Lucie Pintiaux  
-**📊 Version** : 1.1  
+**📊 Version** : 1.2  
 **🔗 Repository** : `dashboard-commercial-nord59`

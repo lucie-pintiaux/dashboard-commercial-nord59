@@ -1,237 +1,239 @@
-# 📊 Dashboard Commercial Nord 59
+# 🏪 Dashboard Commercial Nord 59
 
-Dashboard interactif d'analyse de la dynamique commerciale du département du Nord (59) à partir des données SIRENE.
+**Analyse dynamique commerciale du département du Nord à partir des données SIRENE**
 
-![Version](https://img.shields.io/badge/version-0.5.0-blue)
-![Python](https://img.shields.io/badge/python-3.11+-green)
-![Streamlit](https://img.shields.io/badge/streamlit-1.31+-red)
-![License](https://img.shields.io/badge/license-MIT-yellow)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)](https://streamlit.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Dashboard](https://img.shields.io/badge/Dashboard-Live-success.svg)](https://dashboard-commercial-nord59.streamlit.app)
 
 ---
 
-## 🎯 Objectif
+## 🎯 À propos
 
-Fournir un outil d'analyse accessible aux acteurs du développement économique (CCI, collectivités, CA) pour :
-- Visualiser la dynamique commerciale des 647 communes du Nord
-- Identifier les zones prioritaires d'intervention
-- Analyser l'impact COVID sur le commerce local
-- Cibler les aides à l'installation
+### Problème
+
+Les acteurs du développement économique du Nord (CCI, collectivités, communautés d'agglomération) manquent d'outils accessibles pour analyser la dynamique commerciale territoriale et prendre des décisions éclairées.
+
+### Solution
+
+Dashboard web interactif, open-source et actualisable permettant de **visualiser, analyser et comparer** la situation commerciale des **647 communes** du département du Nord à partir des données SIRENE 2024.
+
+### Valeur ajoutée
+
+- ⏱️ **Gain de temps** : Analyses automatisées vs compilation manuelle Excel (3h → 5 min)
+- 🌐 **Accessibilité** : Interface simple sans compétences techniques requises
+- 📊 **Transparence** : Méthodologie documentée et données publiques
+- 🎯 **Impact territorial** : Aide à la décision pour 203 communes prioritaires identifiées
 
 ---
 
 ## ✨ Fonctionnalités
 
-### 9 pages interactives
+### 📊 9 pages d'analyse interactive
 
-1. **📈 Évolution 2015-2024** : Tendances créations/fermetures avec dates historiques
-2. **🦠 Rupture COVID** : Analyse impact pandémie (avant/pendant/après)
-3. **🗺️ Tendances Commune** : Carte GPS interactive 642 communes
-4. **📉 Types commerces déclin** : Secteurs NAF les plus vulnérables
-5. **🏘️ Focus Commune** : Analyse détaillée par commune (recherche 647)
-6. **🤝 EPCI** : Comparaison intercommunale (17 territoires)
-7. **🏪 Commerces manquants** : Besoins non couverts (203 communes)
-8. **📊 Tableaux de bord** : KPI multi-dimensions pour pilotage
-9. **📋 Données détaillées** : Exports CSV et données brutes
+1. **Évolution 2015-2024** — Tendances créations/fermetures sur 10 ans
+2. **Rupture COVID** — Impact 2020-2021 et analyse comparative
+3. **Tendances par commune** — Carte GPS interactive 647 communes
+4. **Types commerces en déclin** — Top secteurs NAF vulnérables
+5. **Focus Commune** — Diagnostic détaillé avec comparaison département
+6. **EPCI / Intercommunalités** — Vision territoriale 17 EPCI
+7. **Commerces manquants** — Identification 203 communes avec besoins
+8. **Tableaux de bord** — KPI synthétiques multi-dimensions
+9. **Données détaillées** — Exports CSV et documentation méthodologie
 
-### Visualisations
+### 🛠️ Outils avancés
 
-- 🗺️ **3 cartes GPS interactives** (Plotly Mapbox)
-- 📊 **25+ graphiques** (line plots, bar charts, pie charts)
-- 🔍 **15+ filtres dynamiques** (profil, EPCI, secteur, catégorie)
-- 💾 **Exports CSV** (communes, établissements, secteurs, commerces manquants)
+- 📄 **Export PDF** : Fiches diagnostic automatisées par commune
+- 📥 **Export CSV** : Données filtrées par EPCI, catégorie, profil
+- 🗺️ **Cartes GPS** : 3 cartes interactives (Plotly Mapbox)
+- 📈 **25+ graphiques** : Visualisations Plotly interactives
 
 ---
 
-## 🚀 Installation
+## 🖼️ Aperçu
+
+### Dashboard en production
+
+**🌐 URL** : **[https://dashboard-commercial-nord59.streamlit.app](https://dashboard-commercial-nord59.streamlit.app)**
+
+---
+
+## 📊 Données clés
+
+- **98 369 établissements** analysés (codes NAF 47xx — Commerce de détail)
+- **647 communes** du département du Nord (59)
+- **10 ans d'historique** (2015-2024)
+- **4 profils** identifiés : Dynamique, Désertifié, Précaire, Métropole
+- **203 communes prioritaires** nécessitant intervention (Priorité A + B)
+
+### Insights principaux
+
+- 🔴 **Taux mortalité moyen : 57,1%** (59 108 fermés vs 39 261 actifs)
+- 📉 **Secteurs en déclin** : Textile (-74,7%), Commerce alimentaire spécialisé (-100%)
+- 🏜️ **38,5% communes désertifiées** (249 communes profil Désertifié)
+- ⚠️ **13 communes en urgence** (Priorité A : Lille, Roubaix, Maubeuge, Avesnes-sur-Helpe...)
+
+---
+
+## 🚀 Installation et utilisation
 
 ### Prérequis
 
 - Python 3.11+
-- pip
+- Git
+- Git LFS (pour fichiers > 50 MB)
 
-### Étapes
+### Installation locale
 
 ```bash
-# Cloner le repository
-git clone https://github.com/votre-username/dashboard-commercial-nord59.git
+# 1. Cloner le repository
+git clone https://github.com/lucie-pintiaux/dashboard-commercial-nord59.git
 cd dashboard-commercial-nord59
 
-# Créer environnement virtuel
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate  # Windows
+# 2. Installer Git LFS et télécharger fichiers volumineux
+git lfs install
+git lfs pull
 
-# Installer dépendances
+# 3. Créer environnement virtuel
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# Linux/Mac
+source .venv/bin/activate
+
+# 4. Installer dépendances
 pip install -r requirements.txt
-```
 
----
-
-## 📊 Utilisation
-
-### Lancer le dashboard
-
-```bash
+# 5. Lancer dashboard
 cd src/dashboard
-python -m streamlit run app.py
+streamlit run app.py
 ```
 
-Le dashboard s'ouvre automatiquement dans votre navigateur à l'adresse : `http://localhost:8501`
-
-### Naviguer
-
-- Utilisez le **menu latéral** pour accéder aux 9 pages
-- **Filtres dynamiques** : profil, EPCI, secteur NAF, catégorie priorité
-- **Cartes interactives** : zoom, pan, hover pour détails
-- **Exports CSV** : Page 9 pour téléchargements
+Le dashboard s'ouvre automatiquement dans votre navigateur à `http://localhost:8501`
 
 ---
 
-## 📂 Structure du projet
+## 🏗️ Architecture
 
 dashboard-commercial-nord59/<br>
 ├── data/<br>
 │   ├── raw/                    # Données brutes SIRENE<br>
-│   └── processed/              # Données enrichies (GPS, scores)<br>
-├── src/<br>
-│   └── dashboard/<br>
-│       ├── pages/              # 9 pages Streamlit<br>
-│       ├── utils/              # config.py, data_loader.py<br>
-│       └── app.py              # Homepage navigation<br>
+│   └── processed/              # Données nettoyées et enrichies<br>
 ├── docs/                       # Documentation<br>
-├── ROADMAP_ET_JOURNAL_DE_BORD.md<br>
-├── PRODUCT_BACKLOG.md<br>
-└── README.md<br>
----
-
-## 📈 Données
-
-### Sources
-
-- **SIRENE** : Base établissements INSEE (stock 2024)
-- **INSEE** : Population, chômage, revenus communaux
-- **Traitement** : Enrichissement GPS (Lambert 93 → WGS84), scoring, clustering
-
-### Périmètre
-
-- **Département** : Nord (59)
-- **Secteur** : Commerce (NAF 47xx)
-- **Communes** : 647 (642 avec GPS - 99,2%)
-- **Établissements** : 98 369 analysés
-
-### Mises à jour
-
-- Snapshot SIRENE : 2024
-- Dates fermetures historiques : 2015-2024 enrichies
-- Coordonnées GPS : Converties mai 2026
+├── notebooks/                  # Notebooks Jupyter (8 sprints)<br>
+├── outputs/                    # Exports PDF/CSV générés<br>
+├── src/<br>
+│   └── dashboard/              # Application Streamlit<br>
+│       ├── pages/              # 9 pages dashboard<br>
+│       ├── utils/              # Modules utilitaires<br>
+│       └── app.py              # Point d'entrée<br>
+└── tests/                      # Tests unitaires<br>
 
 ---
 
-## 🛠️ Technologies
+### Stack technique
 
-- **Frontend** : Streamlit 1.31+
-- **Visualisation** : Plotly 5.18+
-- **Data** : Pandas 2.1+, NumPy 1.26+
-- **Geo** : Pyproj 3.6+ (conversion coordonnées)
-- **Python** : 3.11+
-
----
-
-## 📊 Métriques Dashboard
-
-- **9 pages** fonctionnelles
-- **25+ graphiques** interactifs
-- **3 cartes GPS** (Plotly Mapbox)
-- **642 communes** géolocalisées (99,2%)
-- **98 369 établissements** analysés
-- **Performance** : < 3 sec chargement/page
+- **Backend** : Python 3.11, Pandas, Scikit-learn
+- **Frontend** : Streamlit 1.32+
+- **Visualisation** : Plotly, Plotly Mapbox
+- **Géolocalisation** : Pyproj (Lambert 93 → WGS84)
+- **Export PDF** : ReportLab 4.5
+- **Déploiement** : Streamlit Cloud + Git LFS
 
 ---
 
-## 🎯 Personas cibles
+## 📚 Méthodologie
 
-- **CCI** : Analyse territoriale, secteurs vulnérables
-- **Communautés d'Agglomération** : Pilotage intercommunal, benchmarking
-- **Élus municipaux** : Diagnostic commune, comparaison département
-- **Créateurs d'entreprise** : Choix implantation, besoins non couverts
+### Sources de données
 
----
+- **SIRENE** : Base établissements INSEE (stock mai 2024)
+- **INSEE** : Population, revenus, chômage par commune
+- **IGN** : Contours administratifs et géolocalisation
 
-## 🚀 Déploiement
+### Pipeline de traitement
 
-### Dashboard en production
+1. **Collecte** : Téléchargement SIRENE StockEtablissement (98 369 lignes)
+2. **Nettoyage** : Filtrage NAF 47xx, gestion valeurs manquantes
+3. **Enrichissement** : Données socio-économiques INSEE, hiérarchie NAF
+4. **Scoring** : Calcul score fragilité 0-100 (5 composantes)
+5. **Clustering** : K-Means 4 profils (Dynamique, Désertifié, Précaire, Métropole)
+6. **Catégorisation** : Priorité A / Priorité B / Non prioritaire
 
-**URL publique** : **[https://dashboard-commercial-nord59.streamlit.app](https://dashboard-commercial-nord59.streamlit.app)** 🌐
+### Indicateurs calculés
 
-Le dashboard est **accessible 24/7** depuis n'importe quel navigateur (desktop/mobile).
+- **Taux mortalité** : (Nb fermés / Total) × 100
+- **Score fragilité** : Composite 5 sous-scores (mortalité, solde, actifs, chômage, revenu)
+- **Commerces manquants** : Identification 7 types essentiels (boulangerie, épicerie, pharmacie...)
 
-### Caractéristiques déploiement
-
-- ✅ **Hébergement** : Streamlit Cloud (gratuit)
-- ✅ **Déploiement continu** : Automatique à chaque push GitHub
-- ✅ **Disponibilité** : 24/7
-- ✅ **Performance** : < 3 sec chargement/page
-- ✅ **Données** : Fichier 55 MB hébergé via Git LFS
-
-### Redéploiement local
-
-Si vous souhaitez exécuter le dashboard localement :
-
-```bash
-# Cloner le repository
-git clone https://github.com/lucie-pintiaux/dashboard-commercial-nord59.git
-cd dashboard-commercial-nord59
-
-# Installer Git LFS (si pas déjà fait)
-git lfs install
-
-# Télécharger fichiers LFS
-git lfs pull
-
-# Créer environnement virtuel
-python -m venv venv
-venv\Scripts\activate  # Windows
-
-# Installer dépendances
-pip install -r requirements.txt
-
-# Lancer dashboard
-cd src/dashboard
-python -m streamlit run app.py
-```
-
-**Note** : Le fichier `etablissements_enrichis_final_20260513.csv` (55 MB) est hébergé via **Git LFS**. La commande `git lfs pull` télécharge automatiquement ce fichier.
+**📖 Documentation complète** : Voir `Page 9 - Données détaillées` du dashboard
 
 ---
 
-## 📝 Licence
+## 📋 Recommandations
 
-Ce projet est sous licence **MIT**.
+### Pour les CCI
 
-Les données SIRENE sont sous **Licence Ouverte** (INSEE).
+1. **Programme Transition Commerce** (150 k€/an) : Formation digitalisation secteurs vulnérables
+2. **Fonds urgence Priorité A** (200 k€/an) : Aide installation 13 communes critiques
+3. **Observatoire Alerte Précoce** (50 k€/an) : Monitoring 249 communes désertifiées
 
----
+### Pour les CA
 
-## 👤 Auteur
+1. **Allocation budgétaire différenciée** (650 k€/an) : Grille par profil et catégorie
+2. **Protocole évaluation avant-après** : Mesure impact investissements
+3. **Commerces mutualisés** (300 k€ pilote) : Mutualisation intercommunale zones rurales
 
-**Lucie Pintiaux**  
-Projet M2 - Dashboard Commercial Nord 59  
-📅 Mai 2026
+**📄 Détails** : Voir notebook `08_sprint8_documentation_finale.ipynb`
 
 ---
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour les guidelines.
+Les contributions sont les bienvenues ! Merci de :
+
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/amelioration`)
+3. Commit vos changements (`git commit -m 'Ajout fonctionnalité X'`)
+4. Push vers la branche (`git push origin feature/amelioration`)
+5. Ouvrir une Pull Request
+
+### Guidelines
+
+- Respecter PEP 8 (linting avec Black + Flake8)
+- Ajouter tests unitaires (coverage > 80%)
+- Documenter fonctions (docstrings Google style)
+
+---
+
+## 📜 Licence
+
+Ce projet est sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
 ## 📞 Contact
 
-- GitHub : https://github.com/lucie-pintiaux
-- Email : l.pintiaux@gmail.com
+**Lucie Pintiaux**
+
+📧 Email : [l.pintiaux@gmail.com](mailto:l.pintiaux@gmail.com)  
+📊 Dashboard : [dashboard-commercial-nord59.streamlit.app](https://dashboard-commercial-nord59.streamlit.app)  
+💻 GitHub : [github.com/lucie-pintiaux/dashboard-commercial-nord59](https://github.com/lucie-pintiaux/dashboard-commercial-nord59)
 
 ---
 
-**⭐ Star ce projet si vous le trouvez utile !**
+## 🙏 Remerciements
+
+- **INSEE** pour données SIRENE et socio-économiques
+- **Streamlit** pour plateforme déploiement gratuite
+- **Plotly** pour bibliothèque visualisation
+- **IGN** pour contours administratifs
+
+---
+
+**📅 Dernière mise à jour** : Mai 2026  
+**📊 Version** : 1.0  
+**🚀 Statut** : Production (Dashboard en ligne 24/7)
+

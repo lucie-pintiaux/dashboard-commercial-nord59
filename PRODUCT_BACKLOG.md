@@ -259,20 +259,66 @@
 
 ---
 
+### 📦 Sprint 7 — Fonctionnalités avancées CA (Semaine 7) ⚠️ PARTIEL
+
+**Objectif** : Fonctionnalités spécifiques Communautés d'Agglomération
+
+**User Stories terminées** :
+
+✅ **US-060** | Fiche diagnostic PDF automatisée par commune (8 SP)
+- Installation ReportLab 4.5.0
+- Fonction generate_commune_pdf() créée
+- Template PDF 3 sections (Identité, KPI, Classification)
+- Code couleur catégories priorités
+- Test validé commune Priorité A
+- **Résultat** : Fiche PDF 2-3 pages générée en < 10 secondes
+
+✅ **US-061** | Export CSV données filtrées (3 SP)
+- Fonction export_filtered_data() créée
+- 5 filtres : EPCI, catégorie, profil, score min/max
+- Format UTF-8 with BOM (Excel-compatible)
+- Métadonnées export automatiques
+- 4 scénarios testés (95, 203, 31, 647 communes)
+- **Résultat** : Exports filtrés opérationnels
+
+**User Stories reportées** :
+
+⏸️ **US-062** | Graphique évolution personnalisé (5 SP)
+- **Raison** : Fonctionnalité "nice to have", moins prioritaire que documentation
+- **Statut** : Reporté version future (si besoin utilisateurs)
+
+⏸️ **US-063** | Benchmarking entre CA similaires (8 SP)
+- **Raison** : Nécessite données externes complémentaires
+- **Statut** : Reporté version future (si besoin utilisateurs)
+
+**Livrables** :
+- ✅ Fonction generate_commune_pdf() opérationnelle
+- ✅ Fonction export_filtered_data() opérationnelle
+- ✅ Notebook 07_sprint7_fonctionnalites_avancees_ca.ipynb
+- ✅ Tests PDF et CSV validés
+
+**Critères d'acceptation** :
+- [x] PDF généré en < 10 secondes
+- [x] Export CSV fonctionne avec filtres multiples
+- [x] Format Excel-compatible (UTF-8 BOM)
+- [x] Métadonnées export incluses
+
+**Durée réalisée** : 11/13 story points (85%)
+
+**Statut** : ⚠️ **PARTIEL** — 2 US terminées, 2 US reportées
+
+**Notes** :
+- Migration Spyder → VSCode pour meilleure gestion .venv
+- ReportLab 4.5.0 installé et opérationnel
+- Décision : Focus documentation finale (Sprint 8) plus prioritaire
+
+---
+
 ## 🔜 SPRINTS À VENIR
 
 ---
 
-### Sprint 7 — Fonctionnalités avancées CA (13 SP)
-**Objectif** : Fonctionnalités spécifiques Communautés d'Agglomération
 
-**User Stories** :
-- 🟠 **US-060** : Fiche diagnostic PDF automatisée par commune (8 SP)
-- 🟠 **US-061** : Export CSV données filtrées par EPCI (3 SP)
-- 🟠 **US-062** : Graphique évolution personnalisé (5 SP)
-- 🟠 **US-063** : Benchmarking entre CA similaires (8 SP)
-
----
 
 ### Sprint 8 — Finalisation & Recommandations (8 SP)
 **Objectif** : Documentation finale et livrables actionnables

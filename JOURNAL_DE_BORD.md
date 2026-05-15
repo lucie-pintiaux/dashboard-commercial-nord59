@@ -752,3 +752,114 @@ git push origin main
 - [ ] Collecte feedbacks utilisateurs CCI/CA
 
 ---
+
+---
+
+## 📅 Session du 15 mai 2026 (Suite)
+
+### ⏱️ Durée : 4 heures (Sprint 7 - Phases 1 & 2)
+
+### 🎯 Sprint actuel : Sprint 7 — Fonctionnalités avancées CA
+
+### ✅ Tâches réalisées
+
+#### US-060 : Export PDF fiches communes (8 SP)
+- [x] Installation ReportLab 4.5.0 dans environnement .venv
+- [x] Migration environnement Spyder → VSCode (détection .venv automatique)
+- [x] Création fonction generate_commune_pdf()
+- [x] Template PDF professionnel 3 sections (Identité, KPI, Classification)
+- [x] Mise en forme avec code couleur catégories priorités
+- [x] Test génération PDF commune Priorité A
+- [x] Validation cas d'usage VP CA
+
+#### US-061 : Export CSV données filtrées (3 SP)
+- [x] Création fonction export_filtered_data()
+- [x] 5 types filtres : EPCI, catégorie, profil, score min/max
+- [x] Format UTF-8 with BOM (compatible Excel)
+- [x] Génération fichiers metadata automatiques
+- [x] 4 tests scénarios : EPCI, prioritaires, profil+score, complet
+- [x] Validation exports (95, 203, 31, 647 communes)
+
+### 📁 Fichiers créés/modifiés
+
+**Sprint 7** :
+- `notebooks/07_sprint7_fonctionnalites_avancees_ca.ipynb`
+- Fonction `generate_commune_pdf()` (template PDF)
+- Fonction `export_filtered_data()` (exports filtrés)
+- `outputs/fiche_*.pdf` (tests PDF)
+- `outputs/export_test*.csv` (4 tests CSV + metadata)
+
+### 💬 Décisions prises
+
+**Décision 1** : Environnement VSCode au lieu de Spyder
+- **Justification** : VSCode détecte automatiquement .venv pour notebooks
+- **Résultat** : Import ReportLab fonctionnel, meilleure intégration Git
+
+**Décision 2** : Arrêt Sprint 7 après US-060 et US-061
+- **Justification** : PDF et CSV = fonctionnalités les plus utiles CA
+- **US reportées** : US-062 (graphiques personnalisés), US-063 (benchmarking)
+- **Résultat** : Priorité documentation finale (Sprint 8)
+
+**Décision 3** : Template PDF minimaliste mais professionnel
+- **Justification** : 3 sections essentielles sans surcharge visuelle
+- **Résultat** : Fiche 2-3 pages, générée en < 10 secondes
+
+### 🚧 Blocages rencontrés
+
+**Problème 1** : ReportLab non accessible depuis Spyder
+- **Cause** : Spyder utilise son propre interpréteur Python (pas le .venv)
+- **Solution** : Migration VSCode avec détection .venv automatique
+
+### 📊 Métriques
+
+**Story points terminés** : 11/13 (85% Sprint 7)
+
+**Sprint 7 partiel** :
+- ✅ US-060 : PDF (8 SP)
+- ✅ US-061 : CSV (3 SP)
+- ⏸️ US-062 : Graphiques (5 SP) — Reporté
+- ⏸️ US-063 : Benchmarking (8 SP) — Reporté
+
+**Tests réalisés** :
+- 1 test PDF (commune Priorité A)
+- 4 tests CSV (EPCI, prioritaires, profil+score, complet)
+
+### 🔄 Git commits
+
+```bash
+# Commit Sprint 7 (à faire)
+git add notebooks/07_sprint7_fonctionnalites_avancees_ca.ipynb outputs/
+git commit -m "feat(sprint7): add PDF export and advanced CSV filtering (US-060, US-061)"
+git push origin main
+```
+
+### 📝 Notes & Apprentissages
+
+**Note 1** : ReportLab 4.5.0 très complet pour PDF professionnels
+- Tableaux avec styles (couleurs, bordures, alignement)
+- Support texte formaté (Paragraph avec HTML-like)
+- Mise en page structurée (SimpleDocTemplate)
+
+**Note 2** : UTF-8 with BOM essentiel pour Excel
+- Encodage standard UTF-8 ne s'ouvre pas correctement dans Excel
+- UTF-8-sig (with BOM) = compatible Excel Windows
+
+**Note 3** : Métadonnées exports = transparence
+- Fichiers _metadata.txt avec date, filtres, stats
+- Traçabilité exports pour audits
+
+**Note 4** : US-062 et US-063 moins prioritaires
+- Graphiques personnalisés = niche use case
+- Benchmarking CA = nécessite données complémentaires externes
+- Documentation finale (Sprint 8) plus importante pour projet
+
+### ⏭️ Prochaine session
+
+**Sprint 8 : Finalisation & Documentation**
+- [ ] Mise à jour PRODUCT_BACKLOG.md (Sprint 7 partiel)
+- [ ] Mise à jour README.md (section fonctionnalités)
+- [ ] Rédaction recommandations CCI (3)
+- [ ] Rédaction recommandations CA (3)
+- [ ] Préparation présentation projet (optionnel)
+
+---

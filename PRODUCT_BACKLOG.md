@@ -118,26 +118,88 @@
 - Mortalité faiblement corrélée chômage (r = 0.126)
 
 ---
+### 📦 Sprint 5 — Dashboard MVP (Semaine 5) ✅ TERMINÉ
+
+**Objectif** : Créer dashboard fonctionnel avec 9 pages
+
+**User Stories terminées** :
+
+✅ **US-040** | Créer architecture dashboard Streamlit
+- Configuration centralisée (config.py)
+- Data loader avec cache (data_loader.py)
+- Homepage navigation (app.py)
+- **Résultat** : 3 modules utils fonctionnels
+
+✅ **US-041** | Page 1 : Vue d'ensemble (Évolution 2015-2024)
+- KPI globaux + graphiques temporels
+- Annotation COVID, analyse 3 périodes
+- **Résultat** : Page fonctionnelle, dates historiques validées
+
+✅ **US-042** | Page 2 : Rupture COVID 2020-2021
+- Comparaison 3 périodes (avant/pendant/après)
+- Bar charts, timeline, 3 onglets analyse
+- **Résultat** : Page complète avec analyses détaillées
+
+✅ **US-043** | Page 3 : Tendances par commune (Carte GPS)
+- Conversion Lambert 93 → WGS84 (642 communes)
+- Carte scatter mapbox interactive
+- Filtres, classements, répartition profils
+- **Résultat** : Carte GPS fonctionnelle, 99,2% communes géolocalisées
+
+✅ **US-044** | Page 4 : Types commerces en déclin
+- Top 10 secteurs NAF vulnérables
+- Tableau détaillé, distribution fragilité
+- **Résultat** : 39 secteurs analysés, taux fermeture moyens
+
+✅ **US-045** | Page 5 : Focus Commune
+- Recherche parmi 647 communes
+- KPI détaillés, comparaison département
+- Évolution temporelle, commerces manquants
+- **Résultat** : Analyse détaillée toute commune
+
+✅ **US-046** | Page 6 : EPCI / Intercommunalités
+- Filtrage par EPCI, comparaison 17 territoires
+- Classement communes EPCI, carte conditionnelle
+- **Résultat** : Vision territoriale intercommunale
+
+✅ **US-047** | Page 7 : Commerces manquants
+- Identification 203 communes avec besoins
+- Top 10 types manquants, carte GPS
+- **Résultat** : 1 155 commerces manquants identifiés
+
+✅ **US-048** | Page 8 : Tableaux de bord
+- KPI multi-dimensions (5 catégories)
+- Synthèse globale, top/flop communes
+- **Résultat** : Dashboard pilotage décideurs
+
+✅ **US-049** | Page 9 : Données détaillées
+- Exports CSV 4 datasets
+- Statistiques, structure, documentation
+- **Résultat** : Transparence et réutilisabilité données
+
+**Livrables** :
+- ✅ 9 pages Streamlit fonctionnelles
+- ✅ 3 cartes GPS interactives
+- ✅ 25+ graphiques Plotly
+- ✅ Exports CSV opérationnels
+- ✅ Dashboard testable en local
+
+**Critères d'acceptation** :
+- [x] Dashboard lance localement sans erreur
+- [x] Navigation fluide entre pages
+- [x] Filtres fonctionnels (EPCI, secteur NAF, profil, catégorie)
+- [x] Temps chargement < 3 secondes
+- [x] Cartes GPS avec 642 communes
+- [x] Exports CSV fonctionnels
+
+**Durée réalisée** : 21 story points (1 session intensive - 13 mai 2026)
+
+**Statut** : ✅ **TERMINÉ À 100%** (9/9 pages validées)
+
+---
 
 ## 🔜 SPRINTS À VENIR
 
-### Sprint 5 — Dashboard MVP (21 SP)
-**Objectif** : Créer dashboard fonctionnel avec 5 pages
-
-**User Stories** :
-- 🔴 **US-040** : Architecture dashboard Streamlit (5 SP)
-- 🔴 **US-041** : Page 1 Vue d'ensemble (KPI globaux + carte) (8 SP)
-- 🔴 **US-042** : Page 2 Focus Commune (détail + comparaison) (8 SP)
-- 🔴 **US-043** : Page 3 Analyse EPCI/CA (8 SP)
-- 🔴 **US-044** : Page 4 Analyse Sectorielle (8 SP)
-- 🔴 **US-045** : Page 5 Documentation (5 SP)
-- 🟠 **US-046** : Tests fonctionnels dashboard (5 SP)
-
-**Critères d'acceptation** :
-- Dashboard lance localement sans erreur
-- Navigation fluide entre 5 pages
-- Filtres fonctionnels (EPCI, secteur NAF)
-- Temps chargement < 3 secondes
 
 ---
 

@@ -478,3 +478,106 @@
 - 🚀 **Prêt pour Sprint 5** : Dashboard MVP (21 SP)
 
 ---
+
+## 📅 Session du 13 mai 2026
+
+### ⏱️ Durée : 8 heures (session intensive)
+
+### 🎯 Sprint actuel : Sprint 5 — Dashboard MVP
+
+### ✅ Tâches réalisées
+
+#### Phase 1 : Correction données historiques
+- [x] Enrichissement dates fermeture historiques 2015-2024
+- [x] Conversion Lambert 93 → WGS84 (70 541 établissements)
+- [x] Création fichiers GPS : `etablissements_avec_gps_20260513.csv` + `communes_avec_gps_20260513.csv`
+- [x] Validation 642/647 communes avec GPS (99,2%)
+
+#### Phase 2 : Architecture dashboard
+- [x] Mise à jour `config.py` avec chemins absolus et PAGE_TITLE
+- [x] Création/correction `data_loader.py` avec 6 fonctions cache
+- [x] Mise à jour `app.py` avec navigation 9 pages
+
+#### Phase 3 : Création 9 pages dashboard
+- [x] Page 1 : Évolution 2015-2024 (graphiques temporels, KPI, analyse périodes)
+- [x] Page 2 : Rupture COVID (3 périodes, bar charts, timeline, 3 onglets)
+- [x] Page 3 : Tendances Commune (CARTE GPS, filtres, classements, profils)
+- [x] Page 4 : Types commerces déclin (Top 10 secteurs, tableau, distribution)
+- [x] Page 5 : Focus Commune (recherche 647 communes, détail, comparaison)
+- [x] Page 6 : EPCI (filtrage, comparaison 17 territoires, carte conditionnelle)
+- [x] Page 7 : Commerces manquants (Top 10, carte GPS 203 communes, tableau)
+- [x] Page 8 : Tableaux de bord (KPI multi-dimensions, synthèse globale)
+- [x] Page 9 : Données détaillées (exports CSV, statistiques, documentation)
+
+### 📁 Fichiers créés/modifiés
+
+**Données** :
+- `data/processed/etablissements_avec_gps_20260513.csv` (55,8 MB)
+- `data/processed/communes_avec_gps_20260513.csv` (0,10 MB)
+
+**Configuration** :
+- `src/dashboard/utils/config.py`
+- `src/dashboard/utils/data_loader.py`
+- `src/dashboard/app.py`
+
+**Pages dashboard** (9 fichiers) :
+- `src/dashboard/pages/1_📈_Evolution_2015_2024.py`
+- `src/dashboard/pages/2_🦠_Rupture_COVID.py`
+- `src/dashboard/pages/3_🗺️_Tendances_Commune.py`
+- `src/dashboard/pages/4_📉_Types_Commerces_Declin.py`
+- `src/dashboard/pages/5_🏘️_Focus_Commune.py`
+- `src/dashboard/pages/6_🤝_EPCI_Intercommunalites.py`
+- `src/dashboard/pages/7_🏪_Commerces_Manquants.py`
+- `src/dashboard/pages/8_📊_Tableaux_Bord.py`
+- `src/dashboard/pages/9_📋_Donnees_Detaillees.py`
+
+### 💬 Décisions prises
+
+**Décision 1** : Conversion coordonnées GPS (Lambert 93 → WGS84)
+- **Justification** : Plotly Mapbox nécessite WGS84 pour cartes interactives
+- **Résultat** : 642/647 communes géolocalisées (99,2%)
+
+**Décision 2** : Chemins absolus dans config.py
+- **Justification** : Chemins relatifs causaient erreurs FileNotFoundError
+- **Note** : À paramétrer pour déploiement Streamlit Cloud (Sprint 6)
+
+**Décision 3** : Limitation 10k lignes page 9
+- **Justification** : Performance navigateur (98k lignes trop lourd)
+- **Solution** : Export CSV complet disponible
+
+### 🚧 Blocages rencontrés
+
+**Problème 1** : Colonnes manquantes (`naf_libelle` vs `naf_classe_libelle`)
+- **Solution** : Vérification structure datasets via pandas + adaptation code
+
+**Problème 2** : Caractères spéciaux dans f-strings (page 2)
+- **Solution** : Pré-calcul variables avant st.metric()
+
+**Problème 3** : Chemins relatifs BASE_DIR incorrects
+- **Solution** : Chemins absolus explicites
+
+### 📊 Métriques
+
+- Story points terminés : **21/21 (100%)**
+- Pages créées : **9/9**
+- Tests passés : **9/9 pages validées**
+- Code coverage : N/A (tests manuels)
+- Performance : < 3 sec chargement/page
+
+
+```
+
+### 📝 Notes & Apprentissages
+
+- **Cache Streamlit** : Gain performance 5 sec → < 1 sec avec @st.cache_data
+- **Plotly Mapbox** : Scatter map plus rapide que choroplèthe (pas de GeoJSON)
+- **UTF-8-sig** : Nécessaire pour exports CSV compatibles Excel Windows
+- **Structure multipage** : Numérotation fichiers contrôle ordre menu
+
+### ⏭️ Prochaine session
+
+**Sprint 6 : Déploiement & Sécurité**
+- Déploiement Streamlit Cloud
+- Configuration secrets/variables environnement
+- URL publique accessible 24/7
+- Tests sécurité basiques

@@ -189,3 +189,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Exports tests Sprint 7
+outputs/export_test*.csv
+outputs/export_test*_metadata.txt
+outputs/fiche_*.pdf

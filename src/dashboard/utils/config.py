@@ -29,7 +29,9 @@ OUTPUTS_DIR = BASE_DIR / "outputs"
 # Fichiers principaux
 COMMUNES_FILE = PROCESSED_DATA_DIR / "communes_avec_gps_20260513.csv"
 COMMUNES_GPS_FILE = PROCESSED_DATA_DIR / "communes_avec_gps_20260513.csv"
-ETABLISSEMENTS_FILE = PROCESSED_DATA_DIR / "etablissements_enrichis_final_20260513.csv"
+# NOTE: Utilisation fichier 18 MB (sur GitHub) au lieu de 55 MB (Git LFS requis)
+# Pour upgrade vers 55 MB avec dates historiques complètes: voir docs/GIT_LFS_SETUP.md
+ETABLISSEMENTS_FILE = PROCESSED_DATA_DIR / "etablissements_enrichis_20260511.csv"
 COMMERCES_MANQUANTS_FILE = PROCESSED_DATA_DIR / "commerces_manquants_20260512.csv"
 SECTEURS_VULNERABLES_FILE = PROCESSED_DATA_DIR / "secteurs_vulnerables_20260512.csv"
 
